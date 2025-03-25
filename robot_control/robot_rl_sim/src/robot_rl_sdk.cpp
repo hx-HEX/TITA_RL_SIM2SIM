@@ -76,20 +76,20 @@ torch::Tensor RL::ComputeTorques(torch::Tensor actions)
 {
     torch::Tensor actions_scaled = actions * this->params.action_scale;
     torch::Tensor output_torques = this->params.rl_kp * (actions_scaled + this->params.default_dof_pos - this->obs.dof_pos) - this->params.rl_kd * this->obs.dof_vel;
-    // // 定义 index
-    // std::vector<int64_t> indices = {3, 7};
+    // 定义 index
+    std::vector<int64_t> indices = {3, 7};
 
-    // // 转成 Tensor
-    // auto indices_tensor = torch::tensor(indices, torch::kLong);
+    // 转成 Tensor
+    auto indices_tensor = torch::tensor(indices, torch::kLong);
 
-    // // 选取所有 batch
-    // auto batch_indices = torch::indexing::Slice();
+    // 选取所有 batch
+    auto batch_indices = torch::indexing::Slice();
 
-    // // 进行 index_put_
-    // output_torques.index_put_(
-    //     {batch_indices, indices_tensor},
-    //     this->params.rl_kp.index({batch_indices, indices_tensor}) * 10 * (actions_scaled.index({batch_indices, indices_tensor}) + this->params.default_dof_pos.index({batch_indices, indices_tensor}))
-    //     - 0.5 * this->params.rl_kd.index({batch_indices, indices_tensor}) * this->obs.dof_vel.index({batch_indices, indices_tensor}));
+    // 进行 index_put_
+    output_torques.index_put_(
+        {batch_indices, indices_tensor},
+        10 * (actions_scaled.index({batch_indices, indices_tensor}) + this->params.default_dof_pos.index({batch_indices, indices_tensor}))
+        - 0.5 * this->obs.dof_vel.index({batch_indices, indices_tensor}));
 
     return output_torques;
 

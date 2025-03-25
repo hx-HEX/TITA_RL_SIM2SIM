@@ -104,6 +104,7 @@ torch::Tensor RobotRlSim::Forward()
 {
     torch::autograd::GradMode::set_enabled(false);
     torch::Tensor clamped_obs = this->ComputeObservation();
+    // std::cout << clamped_obs << std::endl;
     torch::Tensor actions;
     if (this->params.observations_history.size() != 0)
     {
@@ -168,7 +169,6 @@ void RobotRlSim::RunModel()
         return;std::cout << "forward" << std::endl;
     } 
 
-
     this->obs.ang_vel = torch::tensor({imu_msg->angular_velocity.x, 
         imu_msg->angular_velocity.y, 
         imu_msg->angular_velocity.z}).unsqueeze(0); 
@@ -180,8 +180,8 @@ void RobotRlSim::RunModel()
     
     this->obs.dof_pos = torch::tensor(joint_msg->position).narrow(0, 0, this->params.num_of_dofs).unsqueeze(0);
     // // 直接对具体索引位置赋值
-    // this->obs.dof_pos[0][3] = 0;
-    // this->obs.dof_pos[0][7] = 0;
+    this->obs.dof_pos[0][3] = 0;
+    this->obs.dof_pos[0][7] = 0;
 
     this->obs.dof_vel = torch::tensor(joint_msg->velocity).narrow(0, 0, this->params.num_of_dofs).unsqueeze(0);
     // auto start_time = std::chrono::high_resolution_clock::now();
@@ -229,8 +229,8 @@ void RobotRlSim::JointController()
 
     this->obs.dof_pos = torch::tensor(joint_msg->position).narrow(0, 0, this->params.num_of_dofs).unsqueeze(0);
     // // 直接对具体索引位置赋值
-    // this->obs.dof_pos[0][3] = 0;
-    // this->obs.dof_pos[0][7] = 0;
+    this->obs.dof_pos[0][3] = 0;
+    this->obs.dof_pos[0][7] = 0;
 
     this->obs.dof_vel = torch::tensor(joint_msg->velocity).narrow(0, 0, this->params.num_of_dofs).unsqueeze(0);
 
@@ -253,6 +253,10 @@ void RobotRlSim::JointController()
     // 复制数据
     for (size_t i = 0; i < this->params.num_of_dofs; ++i)
     {
+        // if(i == 3 || i ==7)
+        // {
+        //     torque_data[i] = 10 * action_data[i] - 0.5 * joint_msg->velocity[i];
+        // }
         effort_msg.data[i] = torque_data[i];
         action_msg.data[i] = action_data[i];
         joint_msg_.data[i] = joint_msg->position[i];
