@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tita">
+    <xacro:property name = "sim_env" value = "$(arg sim_env)" />
+    <xacro:property name = "sim_ctrl" value = "$(arg sim_ctrl)"/>
+
+    <xacro:include filename = "$(find tita_description)/xacro/description.xacro"/>
+    <xacro:include filename = "$(find tita_description)/xacro/ros2_control.xacro"/>
+
+    <xacro:description />
+    <xacro:tita_ros2_control sim_env = "$(arg sim_env)" sim_ctrl = "$(arg sim_ctrl)"/>
+
+</robot>
