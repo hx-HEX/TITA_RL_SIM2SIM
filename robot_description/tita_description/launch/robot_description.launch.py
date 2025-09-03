@@ -11,7 +11,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 prefix="tita"
 
 def generate_launch_description():
-    # wname = "stairs"
+    wname = "stairs"
     declared_arguments = []
     declared_arguments.append(
         DeclareLaunchArgument(
@@ -36,7 +36,7 @@ def generate_launch_description():
             os.path.join(get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')
         ),
         launch_arguments = {'verbose': 'false',
-                            # "world": os.path.join(get_package_share_directory("robot_rl_sim"), "worlds", wname + ".world"),
+                            "world": os.path.join(get_package_share_directory("robot_rl_sim"), "worlds", wname + ".world"),
                             }.items()
     )
 

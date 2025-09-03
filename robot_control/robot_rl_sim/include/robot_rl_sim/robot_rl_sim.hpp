@@ -50,6 +50,7 @@ class RobotRlSim : public RL, public rclcpp::Node
         void imuCallback(const sensor_msgs::msg::Imu::SharedPtr msg);
         void jointStateCallback(const sensor_msgs::msg::JointState::SharedPtr msg);
         void cmdVelCallback(const geometry_msgs::msg::Twist::SharedPtr msg);
+        torch::Tensor reindex(const torch::Tensor& tensor);
 };
 
 #endif

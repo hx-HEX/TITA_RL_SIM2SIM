@@ -54,12 +54,18 @@
       </material>
     </visual>
     <collision>
-      <origin
+      <!-- <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://tita_description/meshes/base_link.STL" />
+      </geometry> -->
+      <origin 
+        rpy="0 0 0" 
+        xyz="0 0 0.017"/>
+      <geometry>
+        <box size="0.47 0.3 0.19"/>
       </geometry>
     </collision>
   </link>
@@ -122,7 +128,7 @@
           rgba="0.75294 0.75294 0.75294 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -130,7 +136,7 @@
         <mesh
           filename="package://tita_description/meshes/left_hip.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <joint
     name="joint_left_hip"
@@ -145,10 +151,10 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-0.4"
-      upper="0.4"
-      effort="53"
-      velocity="18.84" />
+      lower="-0.785398"
+      upper="0.785398"
+      effort="60"
+      velocity="25" />
   </joint>
   <link
     name="left_thigh">
@@ -181,12 +187,18 @@
       </material>
     </visual>
     <collision>
-      <origin
+      <!-- <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://tita_description/meshes/left_thigh.STL" />
+      </geometry> -->
+      <origin 
+        rpy="0 0 -0.131" 
+        xyz="0.1 0.021 -0.002"/>
+      <geometry>
+        <box size="0.2 0.09 0.05"/>
       </geometry>
     </collision>
   </link>
@@ -203,10 +215,10 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-1.5708"
-      upper="1.5708"
-      effort="53"
-      velocity="18.84" />
+      lower="-1.919862"
+      upper="3.490659"
+      effort="60"
+      velocity="25" />
   </joint>
   <link
     name="left_calf">
@@ -240,12 +252,18 @@
       </material>
     </visual>
     <collision>
-      <origin
+      <!-- <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://tita_description/meshes/left_calf.STL" />
+      </geometry> -->
+      <origin 
+        rpy="0 0 -0.131" 
+        xyz="0.1 0.021 -0.002"/>
+      <geometry>
+        <box size="0.2 0.07 0.05"/>
       </geometry>
     </collision>
   </link>
@@ -262,10 +280,10 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-2.672"
-      upper="-0.83776"
-      effort="53"
-      velocity="18.84" />
+      lower="-2.670354"
+      upper="-0.698132"
+      effort="60"
+      velocity="25" />
   </joint>
   <link
     name="left_wheel">
@@ -298,12 +316,18 @@
       </material>
     </visual>
     <collision>
-      <origin
+      <!-- <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://tita_description/meshes/left_wheel.STL" />
+      </geometry> -->
+      <origin 
+        rpy="0 0 0" 
+        xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.034" radius="0.0925"/>
       </geometry>
     </collision>
   </link>
@@ -322,8 +346,8 @@
     <limit
          lower=" -10000000000000.0"
       upper="10000000000000.0"
-      effort="10"
-      velocity="104.88" />
+      effort="15"
+      velocity="20" />
   </joint>
   <link
     name="right_hip">
@@ -355,7 +379,7 @@
           rgba="0.75294 0.75294 0.75294 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
@@ -363,7 +387,7 @@
         <mesh
           filename="package://tita_description/meshes/right_hip.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <joint
     name="joint_right_hip"
@@ -378,10 +402,10 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-0.4"
-      upper="0.4"
-      effort="53"
-      velocity="18.84" />
+      lower="-0.785398"
+      upper="0.785398"
+      effort="60"
+      velocity="25" />
   </joint>
   <link
     name="right_thigh">
@@ -414,12 +438,18 @@
       </material>
     </visual>
     <collision>
-      <origin
+      <!-- <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://tita_description/meshes/right_thigh.STL" />
+      </geometry> -->
+      <origin 
+        rpy="0 0 -0.131" 
+        xyz="0.1 0.021 -0.002"/>
+      <geometry>
+        <box size="0.2 0.09 0.05"/>
       </geometry>
     </collision>
   </link>
@@ -434,12 +464,12 @@
     <child
       link="right_thigh" />
     <axis
-      xyz="0 0 -1" />
+      xyz="0 0 1" />
     <limit
-      lower="-1.5708"
-      upper="1.5708"
-      effort="53"
-      velocity="18.84" />
+      lower="-1.919862"
+      upper="3.490659"
+      effort="60"
+      velocity="25" />
   </joint>
   <link
     name="right_calf">
@@ -472,12 +502,18 @@
       </material>
     </visual>
     <collision>
-      <origin
+      <!-- <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://tita_description/meshes/right_calf.STL" />
+      </geometry> -->
+      <origin 
+        rpy="0 0 -0.131" 
+        xyz="0.1 0.021 -0.002"/>
+      <geometry>
+        <box size="0.2 0.07 0.05"/>
       </geometry>
     </collision>
   </link>
@@ -492,12 +528,12 @@
     <child
       link="right_calf" />
     <axis
-      xyz="0 0 -1" />
+      xyz="0 0 1" />
     <limit
-      lower="0.83776"
-      upper="2.672"
-      effort="53"
-      velocity="18.84" />
+      lower="-2.670354"
+      upper="-0.698132"
+      effort="60"
+      velocity="25" />
   </joint>
   <link
     name="right_wheel">
@@ -530,12 +566,18 @@
       </material>
     </visual>
     <collision>
-      <origin
+      <!-- <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
           filename="package://tita_description/meshes/right_wheel.STL" />
+      </geometry> -->
+      <origin 
+        rpy="0 0 0" 
+        xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.034" radius="0.0925"/>
       </geometry>
     </collision>
   </link>
@@ -550,12 +592,12 @@
     <child
       link="right_wheel" />
     <axis
-      xyz="0 0 -1" />
+      xyz="0 0 1" />
     <limit
      lower=" -10000000000000.0"
       upper="10000000000000.0"
-      effort="10"
-      velocity="104.88" />
+      effort="15"
+      velocity="20" />
   </joint>
     </xacro:macro>
 </robot>

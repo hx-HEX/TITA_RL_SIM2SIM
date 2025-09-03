@@ -15,8 +15,8 @@
                 <command_interface name="position"/>
                 <command_interface name="velocity"/>
                 <command_interface name="effort">
-                    <param name="min">-53</param>
-                    <param name="max">53</param>
+                    <param name="min">-60</param>
+                    <param name="max">60</param>
                 </command_interface>
                 <command_interface name="kp"/>
                 <command_interface name="kd"/>
@@ -32,14 +32,14 @@
                 <command_interface name="position"/>
                 <command_interface name="velocity"/>
                 <command_interface name="effort">
-                    <param name="min">-53</param>
-                    <param name="max">53</param>
+                    <param name="min">-60</param>
+                    <param name="max">60</param>
                 </command_interface>
                 <command_interface name="kp"/>
                 <command_interface name="kd"/>
 
                 <state_interface name="position">
-                    <param name="initial_value">1.3</param>
+                    <param name="initial_value">0.8</param>
                 </state_interface>
                 <state_interface name="velocity"/>
                 <state_interface name="effort"/>
@@ -49,14 +49,14 @@
                 <command_interface name="position"/>
                 <command_interface name="velocity"/>
                 <command_interface name="effort">
-                    <param name="min">-53</param>
-                    <param name="max">53</param>
+                    <param name="min">-60</param>
+                    <param name="max">60</param>
                 </command_interface>
                 <command_interface name="kp"/>
                 <command_interface name="kd"/>
 
                 <state_interface name="position">
-                    <param name="initial_value">-2.6</param>
+                    <param name="initial_value">-1.5</param>
                 </state_interface>
                 <state_interface name="velocity"/>
                 <state_interface name="effort"/>
@@ -66,8 +66,8 @@
                  <command_interface name="position"/>
                 <command_interface name="velocity"/>
                 <command_interface name="effort">
-                    <param name="min">-10</param>
-                    <param name="max">10</param>
+                    <param name="min">-15</param>
+                    <param name="max">15</param>
                 </command_interface>
                 <command_interface name="kp"/>
                 <command_interface name="kd"/>
@@ -83,8 +83,8 @@
                 <command_interface name="position"/>
                 <command_interface name="velocity"/>
                 <command_interface name="effort">
-                    <param name="min">-53</param>
-                    <param name="max">53</param>
+                    <param name="min">-60</param>
+                    <param name="max">60</param>
                 </command_interface>
                 <command_interface name="kp"/>
                 <command_interface name="kd"/>
@@ -100,14 +100,14 @@
                 <command_interface name="position"/>
                 <command_interface name="velocity"/>
                 <command_interface name="effort">
-                    <param name="min">-53</param>
-                    <param name="max">53</param>
+                    <param name="min">-60</param>
+                    <param name="max">60</param>
                 </command_interface>
                 <command_interface name="kp"/>
                 <command_interface name="kd"/>
 
                 <state_interface name="position">
-                    <param name="initial_value">-1.3</param>
+                    <param name="initial_value">0.8</param>
                 </state_interface>
                 <state_interface name="velocity"/>
                 <state_interface name="effort"/>
@@ -117,14 +117,14 @@
                 <command_interface name="position"/>
                 <command_interface name="velocity"/>
                 <command_interface name="effort">
-                    <param name="min">-53</param>
-                    <param name="max">53</param>
+                    <param name="min">-60</param>
+                    <param name="max">60</param>
                 </command_interface>
                 <command_interface name="kp"/>
                 <command_interface name="kd"/>
 
                 <state_interface name="position">
-                    <param name="initial_value">2.6</param>
+                    <param name="initial_value">-1.5</param>
                 </state_interface>
                 <state_interface name="velocity"/>
                 <state_interface name="effort"/>
@@ -134,8 +134,8 @@
                 <command_interface name="position"/>
                 <command_interface name="velocity"/>
                 <command_interface name="effort">
-                    <param name="min">-10</param>
-                    <param name="max">10</param>
+                    <param name="min">-15</param>
+                    <param name="max">15</param>
                 </command_interface>
                 <command_interface name="kp"/>
                 <command_interface name="kd"/>
@@ -179,7 +179,7 @@
             <gazebo reference="imu_link">
                 <sensor name="imu" type="imu">
                     <always_on>true</always_on>
-                    <update_rate>500</update_rate>
+                    <update_rate>1000</update_rate>
                 </sensor>
             </gazebo>
 
@@ -187,7 +187,7 @@
                 <gravity>true</gravity>
             </gazebo>
             <gazebo reference="base_link">
-                <self_collide>false</self_collide>
+                <self_collide>true</self_collide>
                 <gravity>true</gravity>
                 <mu1>1.0</mu1>
                 <mu2>1.0</mu2>
@@ -199,13 +199,13 @@
                 <mu2>1.0</mu2>
             </gazebo>
             <gazebo reference="joint_left_hip">
-                <self_collide>false</self_collide>
+                <self_collide>true</self_collide>
                 <gravity>true</gravity>
                 <mu1>1.0</mu1>
                 <mu2>1.0</mu2>
             </gazebo>
             <gazebo reference="joint_left_thigh">
-                <self_collide>false</self_collide>
+                <self_collide>true</self_collide>
                 <gravity>true</gravity>
                 <mu1>1.0</mu1>
                 <mu2>1.0</mu2>
@@ -213,7 +213,7 @@
                 <kd  value="1.0"/>
             </gazebo>
             <gazebo reference="joint_left_calf">
-                <self_collide>false</self_collide>
+                <self_collide>true</self_collide>
                 <gravity>true</gravity>
                 <mu1>1.0</mu1>
                 <mu2>1.0</mu2>
@@ -221,21 +221,21 @@
                 <kd  value="1.0"/>
             </gazebo>
             <gazebo reference="joint_left_wheel">
-                <self_collide>false</self_collide>
+                <self_collide>true</self_collide>
                 <gravity>true</gravity>
-                <mu1>1.0</mu1>
-                <mu2>1.0</mu2>
+                <mu1>2.0</mu1>
+                <mu2>2.0</mu2>
                 <kp  value="1000000.0"/>
                 <kd  value="1.0"/>
             </gazebo>
             <gazebo reference="joint_right_hip">
-                <self_collide>false</self_collide>
+                <self_collide>true</self_collide>
                 <gravity>true</gravity>
                 <mu1>1.0</mu1>
                 <mu2>1.0</mu2>
             </gazebo>
             <gazebo reference="joint_right_thigh">
-                <self_collide>false</self_collide>
+                <self_collide>true</self_collide>
                 <gravity>true</gravity>
                 <mu1>1.0</mu1>
                 <mu2>1.0</mu2>
@@ -243,7 +243,7 @@
                 <kd  value="1.0"/>
             </gazebo>
             <gazebo reference="joint_right_calf">
-                <self_collide>false</self_collide>
+                <self_collide>true</self_collide>
                 <gravity>true</gravity>
                 <mu1>1.0</mu1>
                 <mu2>1.0</mu2>
@@ -251,17 +251,17 @@
                 <kd  value="1.0"/>
             </gazebo>
             <gazebo reference="joint_right_wheel">
-                <self_collide>false</self_collide>
+                <self_collide>true</self_collide>
                 <gravity>true</gravity>
-                <mu1>1.0</mu1>
-                <mu2>1.0</mu2>
+                <mu1>2.0</mu1>
+                <mu2>2.0</mu2>
                 <kp  value="1000000.0"/>
                 <kd  value="1.0"/>
             </gazebo>
 
             <gazebo>
                 <is_static>true</is_static>
-                <self_collide>false</self_collide>
+                <self_collide>true</self_collide>
             </gazebo>
 
         </xacro:if>

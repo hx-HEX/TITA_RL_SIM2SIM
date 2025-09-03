@@ -3,7 +3,7 @@
   <name>tita_description</name>
   <version>2.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="1499217911@qq.com">Ziqi Fan</maintainer>
+  <maintainer email="1499217911@qq.com">Xing He</maintainer>
   <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

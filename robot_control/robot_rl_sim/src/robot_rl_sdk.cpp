@@ -1,4 +1,5 @@
 #include "robot_rl_sim/robot_rl_sdk.hpp"
+using namespace at::indexing;
 
 torch::Tensor RL::ComputeObservation()
 {
@@ -69,13 +70,24 @@ void RL::InitControl()
 {
     this->control.v = 0.0;
     this->control.w = 0.0;
-    this->control.height = 0.3;
+    this->control.height = 0.0;
 }
 
 torch::Tensor RL::ComputeTorques(torch::Tensor actions)
 {
-    torch::Tensor actions_scaled = actions * this->params.action_scale;
-    torch::Tensor output_torques = this->params.rl_kp * (actions_scaled + this->params.default_dof_pos - this->obs.dof_pos) - this->params.rl_kd * this->obs.dof_vel;
+    // 假设 actions 是一个二维张量 [batch_size, action_dim]
+    // torch::Tensor actions_scaled = actions * this->params.action_scale;
+    torch::Tensor actions_scaled = actions * 0.5;
+
+    // 单独缩放第 0 列
+    actions_scaled.index_put_({Slice(), 0}, actions_scaled.index({Slice(), 0}) * this->params.hip_scale_reduction);
+
+    // 单独缩放第 4 列
+    actions_scaled.index_put_({Slice(), 4}, actions_scaled.index({Slice(), 4}) * this->params.hip_scale_reduction);
+
+    // torch::Tensor actions_scaled = actions * this->params.action_scale;
+    // torch::Tensor output_torques = this->params.rl_kp * (actions_scaled + this->params.default_dof_pos - this->obs.dof_pos) - this->params.rl_kd * this->obs.dof_vel;
+    torch::Tensor output_torques = 42.0 * (actions_scaled + this->params.default_dof_pos - this->obs.dof_pos) - 2.5 * this->obs.dof_vel;
     // 定义 index
     std::vector<int64_t> indices = {3, 7};
 
@@ -85,11 +97,15 @@ torch::Tensor RL::ComputeTorques(torch::Tensor actions)
     // 选取所有 batch
     auto batch_indices = torch::indexing::Slice();
 
-    // 进行 index_put_
+    // // 进行 index_put_
+    // output_torques.index_put_(
+    //     {batch_indices, indices_tensor},
+    //     12 * (actions_scaled.index({batch_indices, indices_tensor}) + this->params.default_dof_pos.index({batch_indices, indices_tensor}))
+    //     - 1.5 * this->obs.dof_vel.index({batch_indices, indices_tensor}));
     output_torques.index_put_(
         {batch_indices, indices_tensor},
-        10 * (actions_scaled.index({batch_indices, indices_tensor}) + this->params.default_dof_pos.index({batch_indices, indices_tensor}))
-        - 0.5 * this->obs.dof_vel.index({batch_indices, indices_tensor}));
+    1.5 * (8.0 * (actions_scaled.index({batch_indices, indices_tensor}) + this->params.default_dof_pos.index({batch_indices, indices_tensor}))
+        - 1.0 * this->obs.dof_vel.index({batch_indices, indices_tensor})));
 
     return output_torques;
 

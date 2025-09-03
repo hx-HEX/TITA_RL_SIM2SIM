@@ -14,6 +14,7 @@ install(
     meshes
     urdf
     xacro
+    xml
 
   DESTINATION
     share/${PROJECT_NAME}/
